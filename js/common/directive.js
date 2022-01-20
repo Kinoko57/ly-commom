@@ -30,5 +30,21 @@ export default {
                 };
             }
         }
+    },
+    numberOnly(el){
+        const inputEl = el.querySelector('.el-input__inner');
+        inputEl.onkeyup = () => {
+            inputEl.value = inputEl.value.replace(/[^\d]/g, "");
+            el.dispatchEvent(new Event("input"));
+        };
+        inputEl.onblur = () => {
+            inputEl.value = inputEl.value.replace(/[^\d]/g, "");
+            inpueltEl.dispatchEvent(new Event("input"));// 触发v-model input事件，更改v-model绑定的变量值
+        };
+    },
+    focus(el){
+        // 指令的定义
+            // 聚焦元素
+        el.querySelector('input').focus()
     }
 }
