@@ -1,3 +1,4 @@
+import debounce from "lodash.debounce";
 export default {
     //拖拽指令 value是距离DOM顶部的有效拖拽像素
     drag(el, binding) {
@@ -33,13 +34,13 @@ export default {
     },
     numberOnly(el){
         const inputEl = el.querySelector('.el-input__inner');
-        inputEl.onkeyup = () => {
+        inputEl.onkeyup = debounce(() => {
             inputEl.value = inputEl.value.replace(/[^\d]/g, "");
-            el.dispatchEvent(new Event("input"));
-        };
+            inputEl.dispatchEvent(new Event("input"));
+        }, 200);
         inputEl.onblur = () => {
             inputEl.value = inputEl.value.replace(/[^\d]/g, "");
-            inpueltEl.dispatchEvent(new Event("input"));// 触发v-model input事件，更改v-model绑定的变量值
+            inputEl.dispatchEvent(new Event("input"));// 触发v-model input事件，更改v-model绑定的变量值
         };
     },
     focus(el){

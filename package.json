@@ -11,5 +11,8 @@
     "method"
   ],
   "author": "liyan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  }
 }
